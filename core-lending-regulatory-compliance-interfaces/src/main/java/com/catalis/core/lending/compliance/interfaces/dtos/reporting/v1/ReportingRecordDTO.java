@@ -1,8 +1,8 @@
 package com.catalis.core.lending.compliance.interfaces.dtos.reporting.v1;
 
-import com.catalis.common.core.filters.FilterableId;
 import com.catalis.core.lending.compliance.interfaces.enums.reporting.v1.CurrencyCodeEnum;
 import com.catalis.core.lending.compliance.interfaces.enums.reporting.v1.RecordTypeEnum;
+import com.catalis.core.utils.annotations.FilterableId;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
