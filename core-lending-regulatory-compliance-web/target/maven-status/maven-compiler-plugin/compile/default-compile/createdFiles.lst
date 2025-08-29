@@ -1,7 +1,0 @@
-com/firefly/core/lending/compliance/web/controllers/reporting/v1/ReportingRecordController.class
-com/firefly/core/lending/compliance/web/ReportingComplianceApplication.class
-com/firefly/core/lending/compliance/web/controllers/reporting/v1/RegulatorySubmissionController.class
-com/firefly/core/lending/compliance/web/controllers/aml/v1/AmlCaseController.class
-com/firefly/core/lending/compliance/web/controllers/reporting/v1/ReportingRunController.class
-com/firefly/core/lending/compliance/web/controllers/aml/v1/AmlActionController.class
-com/firefly/core/lending/compliance/web/controllers/aml/v1/AmlSarController.class
