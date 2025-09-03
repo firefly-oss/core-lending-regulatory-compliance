@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/aml-cases/{amlCaseId}/sars")
 @Tag(name = "AmlSar", description = "Operations on SAR (Suspicious Activity Reports) within an AML case")
@@ -22,7 +24,7 @@ public class AmlSarController {
     @GetMapping
     @Operation(summary = "List or search SARs for a given AML case")
     public Mono<ResponseEntity<PaginationResponse<AmlSarDTO>>> findAll(
-            @PathVariable Long amlCaseId,
+            @PathVariable UUID amlCaseId,
             @ModelAttribute FilterRequest<AmlSarDTO> filterRequest) {
 
         return service.findAll(amlCaseId, filterRequest)
@@ -32,7 +34,7 @@ public class AmlSarController {
     @PostMapping
     @Operation(summary = "Create a new SAR (Suspicious Activity Report)")
     public Mono<ResponseEntity<AmlSarDTO>> create(
-            @PathVariable Long amlCaseId,
+            @PathVariable UUID amlCaseId,
             @RequestBody AmlSarDTO dto) {
 
         return service.create(amlCaseId, dto)
@@ -42,8 +44,8 @@ public class AmlSarController {
     @GetMapping("/{amlSarId}")
     @Operation(summary = "Get a SAR by ID")
     public Mono<ResponseEntity<AmlSarDTO>> getById(
-            @PathVariable Long amlCaseId,
-            @PathVariable Long amlSarId) {
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlSarId) {
 
         return service.getById(amlCaseId, amlSarId)
                 .map(ResponseEntity::ok);
@@ -52,8 +54,8 @@ public class AmlSarController {
     @PutMapping("/{amlSarId}")
     @Operation(summary = "Update a SAR record")
     public Mono<ResponseEntity<AmlSarDTO>> update(
-            @PathVariable Long amlCaseId,
-            @PathVariable Long amlSarId,
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlSarId,
             @RequestBody AmlSarDTO dto) {
 
         return service.update(amlCaseId, amlSarId, dto)
@@ -63,8 +65,8 @@ public class AmlSarController {
     @DeleteMapping("/{amlSarId}")
     @Operation(summary = "Delete a SAR record")
     public Mono<ResponseEntity<Void>> delete(
-            @PathVariable Long amlCaseId,
-            @PathVariable Long amlSarId) {
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlSarId) {
 
         return service.delete(amlCaseId, amlSarId)
                 .thenReturn(ResponseEntity.noContent().build());

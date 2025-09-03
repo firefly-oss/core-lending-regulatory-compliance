@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/reporting-runs/{reportingRunId}/submissions")
 @Tag(name = "RegulatorySubmission", description = "Operations for Regulatory Submissions within a Reporting Run")
@@ -22,7 +24,7 @@ public class RegulatorySubmissionController {
     @GetMapping
     @Operation(summary = "List or search regulatory submissions for a specific run")
     public Mono<ResponseEntity<PaginationResponse<RegulatorySubmissionDTO>>> findAll(
-            @PathVariable Long reportingRunId,
+            @PathVariable UUID reportingRunId,
             @ModelAttribute FilterRequest<RegulatorySubmissionDTO> filterRequest) {
 
         return service.findAll(reportingRunId, filterRequest)
@@ -32,7 +34,7 @@ public class RegulatorySubmissionController {
     @PostMapping
     @Operation(summary = "Create a new regulatory submission")
     public Mono<ResponseEntity<RegulatorySubmissionDTO>> create(
-            @PathVariable Long reportingRunId,
+            @PathVariable UUID reportingRunId,
             @RequestBody RegulatorySubmissionDTO dto) {
 
         return service.create(reportingRunId, dto)
@@ -42,8 +44,8 @@ public class RegulatorySubmissionController {
     @GetMapping("/{regulatorySubmissionId}")
     @Operation(summary = "Get a regulatory submission by ID")
     public Mono<ResponseEntity<RegulatorySubmissionDTO>> getById(
-            @PathVariable Long reportingRunId,
-            @PathVariable Long regulatorySubmissionId) {
+            @PathVariable UUID reportingRunId,
+            @PathVariable UUID regulatorySubmissionId) {
 
         return service.getById(reportingRunId, regulatorySubmissionId)
                 .map(ResponseEntity::ok);
@@ -52,8 +54,8 @@ public class RegulatorySubmissionController {
     @PutMapping("/{regulatorySubmissionId}")
     @Operation(summary = "Update a regulatory submission")
     public Mono<ResponseEntity<RegulatorySubmissionDTO>> update(
-            @PathVariable Long reportingRunId,
-            @PathVariable Long regulatorySubmissionId,
+            @PathVariable UUID reportingRunId,
+            @PathVariable UUID regulatorySubmissionId,
             @RequestBody RegulatorySubmissionDTO dto) {
 
         return service.update(reportingRunId, regulatorySubmissionId, dto)
@@ -63,8 +65,8 @@ public class RegulatorySubmissionController {
     @DeleteMapping("/{regulatorySubmissionId}")
     @Operation(summary = "Delete a regulatory submission record")
     public Mono<ResponseEntity<Void>> delete(
-            @PathVariable Long reportingRunId,
-            @PathVariable Long regulatorySubmissionId) {
+            @PathVariable UUID reportingRunId,
+            @PathVariable UUID regulatorySubmissionId) {
 
         return service.delete(reportingRunId, regulatorySubmissionId)
                 .thenReturn(ResponseEntity.noContent().build());

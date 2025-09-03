@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/aml-cases")
 @Tag(name = "AmlCase", description = "Operations on AML (Anti-Money Laundering) Cases")
@@ -37,7 +39,7 @@ public class AmlCaseController {
 
     @GetMapping("/{amlCaseId}")
     @Operation(summary = "Get an AML case by ID")
-    public Mono<ResponseEntity<AmlCaseDTO>> getById(@PathVariable Long amlCaseId) {
+    public Mono<ResponseEntity<AmlCaseDTO>> getById(@PathVariable UUID amlCaseId) {
         return service.getById(amlCaseId)
                 .map(ResponseEntity::ok);
     }
@@ -45,7 +47,7 @@ public class AmlCaseController {
     @PutMapping("/{amlCaseId}")
     @Operation(summary = "Update an AML case")
     public Mono<ResponseEntity<AmlCaseDTO>> update(
-            @PathVariable Long amlCaseId,
+            @PathVariable UUID amlCaseId,
             @RequestBody AmlCaseDTO dto) {
 
         return service.update(amlCaseId, dto)
@@ -54,7 +56,7 @@ public class AmlCaseController {
 
     @DeleteMapping("/{amlCaseId}")
     @Operation(summary = "Delete an AML case")
-    public Mono<ResponseEntity<Void>> delete(@PathVariable Long amlCaseId) {
+    public Mono<ResponseEntity<Void>> delete(@PathVariable UUID amlCaseId) {
         return service.delete(amlCaseId)
                 .thenReturn(ResponseEntity.noContent().build());
     }

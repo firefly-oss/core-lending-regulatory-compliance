@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/aml-cases/{amlCaseId}/actions")
 @Tag(name = "AmlAction", description = "Operations on actions within an AML case")
@@ -22,7 +24,7 @@ public class AmlActionController {
     @GetMapping
     @Operation(summary = "List or search AML actions for a case")
     public Mono<ResponseEntity<PaginationResponse<AmlActionDTO>>> findAll(
-            @PathVariable Long amlCaseId,
+            @PathVariable UUID amlCaseId,
             @ModelAttribute FilterRequest<AmlActionDTO> filterRequest) {
 
         return service.findAll(amlCaseId, filterRequest)
@@ -32,7 +34,7 @@ public class AmlActionController {
     @PostMapping
     @Operation(summary = "Create a new AML action")
     public Mono<ResponseEntity<AmlActionDTO>> create(
-            @PathVariable Long amlCaseId,
+            @PathVariable UUID amlCaseId,
             @RequestBody AmlActionDTO dto) {
 
         return service.create(amlCaseId, dto)
@@ -42,8 +44,8 @@ public class AmlActionController {
     @GetMapping("/{amlActionId}")
     @Operation(summary = "Get an AML action by ID")
     public Mono<ResponseEntity<AmlActionDTO>> getById(
-            @PathVariable Long amlCaseId,
-            @PathVariable Long amlActionId) {
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlActionId) {
 
         return service.getById(amlCaseId, amlActionId)
                 .map(ResponseEntity::ok);
@@ -52,8 +54,8 @@ public class AmlActionController {
     @PutMapping("/{amlActionId}")
     @Operation(summary = "Update an AML action")
     public Mono<ResponseEntity<AmlActionDTO>> update(
-            @PathVariable Long amlCaseId,
-            @PathVariable Long amlActionId,
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlActionId,
             @RequestBody AmlActionDTO dto) {
 
         return service.update(amlCaseId, amlActionId, dto)
@@ -63,8 +65,8 @@ public class AmlActionController {
     @DeleteMapping("/{amlActionId}")
     @Operation(summary = "Delete an AML action")
     public Mono<ResponseEntity<Void>> delete(
-            @PathVariable Long amlCaseId,
-            @PathVariable Long amlActionId) {
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlActionId) {
 
         return service.delete(amlCaseId, amlActionId)
                 .thenReturn(ResponseEntity.noContent().build());

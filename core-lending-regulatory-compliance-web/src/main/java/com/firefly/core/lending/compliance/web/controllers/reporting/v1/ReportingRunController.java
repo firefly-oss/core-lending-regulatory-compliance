@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/reporting-runs")
 @Tag(name = "ReportingRun", description = "Operations for Reporting Runs")
@@ -37,7 +39,7 @@ public class ReportingRunController {
 
     @GetMapping("/{reportingRunId}")
     @Operation(summary = "Get a reporting run by ID")
-    public Mono<ResponseEntity<ReportingRunDTO>> getById(@PathVariable Long reportingRunId) {
+    public Mono<ResponseEntity<ReportingRunDTO>> getById(@PathVariable UUID reportingRunId) {
         return service.getById(reportingRunId)
                 .map(ResponseEntity::ok);
     }
@@ -45,7 +47,7 @@ public class ReportingRunController {
     @PutMapping("/{reportingRunId}")
     @Operation(summary = "Update a reporting run")
     public Mono<ResponseEntity<ReportingRunDTO>> update(
-            @PathVariable Long reportingRunId,
+            @PathVariable UUID reportingRunId,
             @RequestBody ReportingRunDTO dto) {
 
         return service.update(reportingRunId, dto)
@@ -54,7 +56,7 @@ public class ReportingRunController {
 
     @DeleteMapping("/{reportingRunId}")
     @Operation(summary = "Delete a reporting run")
-    public Mono<ResponseEntity<Void>> delete(@PathVariable Long reportingRunId) {
+    public Mono<ResponseEntity<Void>> delete(@PathVariable UUID reportingRunId) {
         return service.delete(reportingRunId)
                 .thenReturn(ResponseEntity.noContent().build());
     }

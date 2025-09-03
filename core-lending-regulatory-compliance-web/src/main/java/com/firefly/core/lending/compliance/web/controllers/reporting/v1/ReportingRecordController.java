@@ -11,6 +11,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @RestController
 @RequestMapping("/api/v1/reporting-runs/{reportingRunId}/records")
 @Tag(name = "ReportingRecord", description = "Operations for Reporting Records within a Reporting Run")
@@ -22,7 +24,7 @@ public class ReportingRecordController {
     @GetMapping
     @Operation(summary = "List or search reporting records for a specific run")
     public Mono<ResponseEntity<PaginationResponse<ReportingRecordDTO>>> findAll(
-            @PathVariable Long reportingRunId,
+            @PathVariable UUID reportingRunId,
             @ModelAttribute FilterRequest<ReportingRecordDTO> filterRequest) {
 
         return service.findAll(reportingRunId, filterRequest)
@@ -32,7 +34,7 @@ public class ReportingRecordController {
     @PostMapping
     @Operation(summary = "Create a new reporting record")
     public Mono<ResponseEntity<ReportingRecordDTO>> create(
-            @PathVariable Long reportingRunId,
+            @PathVariable UUID reportingRunId,
             @RequestBody ReportingRecordDTO dto) {
 
         return service.create(reportingRunId, dto)
@@ -42,8 +44,8 @@ public class ReportingRecordController {
     @GetMapping("/{reportingRecordId}")
     @Operation(summary = "Get a reporting record by ID")
     public Mono<ResponseEntity<ReportingRecordDTO>> getById(
-            @PathVariable Long reportingRunId,
-            @PathVariable Long reportingRecordId) {
+            @PathVariable UUID reportingRunId,
+            @PathVariable UUID reportingRecordId) {
 
         return service.getById(reportingRunId, reportingRecordId)
                 .map(ResponseEntity::ok);
@@ -52,8 +54,8 @@ public class ReportingRecordController {
     @PutMapping("/{reportingRecordId}")
     @Operation(summary = "Update a reporting record")
     public Mono<ResponseEntity<ReportingRecordDTO>> update(
-            @PathVariable Long reportingRunId,
-            @PathVariable Long reportingRecordId,
+            @PathVariable UUID reportingRunId,
+            @PathVariable UUID reportingRecordId,
             @RequestBody ReportingRecordDTO dto) {
 
         return service.update(reportingRunId, reportingRecordId, dto)
@@ -63,8 +65,8 @@ public class ReportingRecordController {
     @DeleteMapping("/{reportingRecordId}")
     @Operation(summary = "Delete a reporting record")
     public Mono<ResponseEntity<Void>> delete(
-            @PathVariable Long reportingRunId,
-            @PathVariable Long reportingRecordId) {
+            @PathVariable UUID reportingRunId,
+            @PathVariable UUID reportingRecordId) {
 
         return service.delete(reportingRunId, reportingRecordId)
                 .thenReturn(ResponseEntity.noContent().build());
