@@ -11,6 +11,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -21,10 +22,10 @@ public class RegulatorySubmission {
 
     @Id
     @Column("regulatory_submission_id")
-    private Long regulatorySubmissionId;
+    private UUID regulatorySubmissionId;
 
     @Column("reporting_run_id")
-    private Long reportingRunId;
+    private UUID reportingRunId;
 
     @Column("submission_ref")
     private String submissionRef;

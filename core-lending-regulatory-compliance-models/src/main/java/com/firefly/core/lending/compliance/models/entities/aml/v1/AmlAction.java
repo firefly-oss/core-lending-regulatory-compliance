@@ -10,6 +10,7 @@ import org.springframework.data.relational.core.mapping.Column;
 import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -20,10 +21,10 @@ public class AmlAction {
 
     @Id
     @Column("aml_action_id")
-    private Long amlActionId;
+    private UUID amlActionId;
 
     @Column("aml_case_id")
-    private Long amlCaseId;
+    private UUID amlCaseId;
 
     @Column("action_date")
     private LocalDateTime actionDate;

@@ -12,6 +12,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -22,7 +23,7 @@ public class ReportingRun {
 
     @Id
     @Column("reporting_run_id")
-    private Long reportingRunId;
+    private UUID reportingRunId;
 
     @Column("report_type")
     private ReportTypeEnum reportType;

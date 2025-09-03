@@ -11,6 +11,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -21,10 +22,10 @@ public class AmlSar {
 
     @Id
     @Column("aml_sar_id")
-    private Long amlSarId;
+    private UUID amlSarId;
 
     @Column("aml_case_id")
-    private Long amlCaseId;
+    private UUID amlCaseId;
 
     @Column("sar_reference")
     private String sarReference;

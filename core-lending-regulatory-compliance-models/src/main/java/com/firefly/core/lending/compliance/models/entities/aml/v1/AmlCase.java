@@ -12,6 +12,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -22,16 +23,16 @@ public class AmlCase {
 
     @Id
     @Column("aml_case_id")
-    private Long amlCaseId;
+    private UUID amlCaseId;
 
     @Column("reporting_run_id")
-    private Long reportingRunId;
+    private UUID reportingRunId;
 
     @Column("customer_id")
-    private Long customerId;
+    private UUID customerId;
 
     @Column("transaction_id")
-    private Long transactionId;
+    private UUID transactionId;
 
     @Column("aml_case_status")
     private AmlCaseStatusEnum amlCaseStatus;

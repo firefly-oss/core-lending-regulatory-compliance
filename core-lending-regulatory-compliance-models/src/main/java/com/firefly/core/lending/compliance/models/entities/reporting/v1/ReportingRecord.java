@@ -12,6 +12,7 @@ import org.springframework.data.relational.core.mapping.Table;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.UUID;
 
 @Data
 @Builder
@@ -22,20 +23,20 @@ public class ReportingRecord {
 
     @Id
     @Column("reporting_record_id")
-    private Long reportingRecordId;
+    private UUID reportingRecordId;
 
     @Column("reporting_run_id")
-    private Long reportingRunId;
+    private UUID reportingRunId;
 
     // External references (no direct FK in DB):
     @Column("loan_servicing_case_id")
-    private Long loanServicingCaseId;
+    private UUID loanServicingCaseId;
 
     @Column("customer_id")
-    private Long customerId;
+    private UUID customerId;
 
     @Column("transaction_id")
-    private Long transactionId;
+    private UUID transactionId;
 
     @Column("record_type")
     private RecordTypeEnum recordType;
