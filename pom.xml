@@ -18,6 +18,7 @@
         <module>core-lending-regulatory-compliance-interfaces</module>
         <module>core-lending-regulatory-compliance-models</module>
         <module>core-lending-regulatory-compliance-web</module>
+        <module>core-lending-regulatory-compliance-sdk</module>
     </modules>
 
     <properties>
@@ -37,6 +38,11 @@
             <dependency>
                 <groupId>com.firefly</groupId>
                 <artifactId>core-lending-regulatory-compliance-models</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.firefly</groupId>
+                <artifactId>core-lending-regulatory-compliance-sdk</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
