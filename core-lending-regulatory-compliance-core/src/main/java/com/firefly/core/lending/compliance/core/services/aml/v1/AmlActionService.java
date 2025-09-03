@@ -5,6 +5,8 @@ import com.firefly.common.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.interfaces.dtos.aml.v1.AmlActionDTO;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 public interface AmlActionService {
 
     /**
@@ -16,7 +18,7 @@ public interface AmlActionService {
      * @return a reactive Mono containing a PaginationResponse object with a list of matching
      *         AmlActionDTO objects and associated pagination metadata
      */
-    Mono<PaginationResponse<AmlActionDTO>> findAll(Long amlCaseId, FilterRequest<AmlActionDTO> filterRequest);
+    Mono<PaginationResponse<AmlActionDTO>> findAll(UUID amlCaseId, FilterRequest<AmlActionDTO> filterRequest);
 
     /**
      * Creates a new AML action associated with the specified AML case ID using the provided details.
@@ -25,7 +27,7 @@ public interface AmlActionService {
      * @param dto the {@link AmlActionDTO} object containing the details of the AML action to be created
      * @return a {@link Mono} emitting the created {@link AmlActionDTO} object upon successful creation
      */
-    Mono<AmlActionDTO> create(Long amlCaseId, AmlActionDTO dto);
+    Mono<AmlActionDTO> create(UUID amlCaseId, AmlActionDTO dto);
 
     /**
      * Retrieves a specific AML action by its unique identifier within a particular AML case.
@@ -34,7 +36,7 @@ public interface AmlActionService {
      * @param amlActionId the unique identifier of the AML action to be retrieved
      * @return a Mono emitting the requested AmlActionDTO if found, otherwise an empty Mono
      */
-    Mono<AmlActionDTO> getById(Long amlCaseId, Long amlActionId);
+    Mono<AmlActionDTO> getById(UUID amlCaseId, UUID amlActionId);
 
     /**
      * Updates an existing AML action for a specific AML case using the provided data.
@@ -44,7 +46,7 @@ public interface AmlActionService {
      * @param dto the {@link AmlActionDTO} object containing the updated details of the AML action
      * @return a {@link Mono} emitting the updated {@link AmlActionDTO} object upon successful update, or an error if the update fails
      */
-    Mono<AmlActionDTO> update(Long amlCaseId, Long amlActionId, AmlActionDTO dto);
+    Mono<AmlActionDTO> update(UUID amlCaseId, UUID amlActionId, AmlActionDTO dto);
 
     /**
      * Deletes an AML action associated with a specific AML case, identified by their unique identifiers.
@@ -53,5 +55,5 @@ public interface AmlActionService {
      * @param amlActionId the unique identifier of the AML action to be deleted
      * @return a {@link Mono} signaling the completion of the delete operation
      */
-    Mono<Void> delete(Long amlCaseId, Long amlActionId);
+    Mono<Void> delete(UUID amlCaseId, UUID amlActionId);
 }

@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 public class ReportingRecordServiceImpl implements ReportingRecordService {
@@ -23,7 +25,7 @@ public class ReportingRecordServiceImpl implements ReportingRecordService {
     private ReportingRecordMapper mapper;
 
     @Override
-    public Mono<PaginationResponse<ReportingRecordDTO>> findAll(Long reportingRunId, FilterRequest<ReportingRecordDTO> filterRequest) {
+    public Mono<PaginationResponse<ReportingRecordDTO>> findAll(UUID reportingRunId, FilterRequest<ReportingRecordDTO> filterRequest) {
         filterRequest.getFilters().setReportingRunId(reportingRunId);
         return FilterUtils.createFilter(
                 ReportingRecord.class,
@@ -32,7 +34,7 @@ public class ReportingRecordServiceImpl implements ReportingRecordService {
     }
 
     @Override
-    public Mono<ReportingRecordDTO> create(Long reportingRunId, ReportingRecordDTO dto) {
+    public Mono<ReportingRecordDTO> create(UUID reportingRunId, ReportingRecordDTO dto) {
         dto.setReportingRunId(reportingRunId);
         ReportingRecord entity = mapper.toEntity(dto);
         return repository.save(entity)
@@ -40,14 +42,14 @@ public class ReportingRecordServiceImpl implements ReportingRecordService {
     }
 
     @Override
-    public Mono<ReportingRecordDTO> getById(Long reportingRunId, Long reportingRecordId) {
+    public Mono<ReportingRecordDTO> getById(UUID reportingRunId, UUID reportingRecordId) {
         return repository.findById(reportingRecordId)
                 .filter(record -> record.getReportingRunId().equals(reportingRunId))
                 .map(mapper::toDTO);
     }
 
     @Override
-    public Mono<ReportingRecordDTO> update(Long reportingRunId, Long reportingRecordId, ReportingRecordDTO dto) {
+    public Mono<ReportingRecordDTO> update(UUID reportingRunId, UUID reportingRecordId, ReportingRecordDTO dto) {
         return repository.findById(reportingRecordId)
                 .filter(record -> record.getReportingRunId().equals(reportingRunId))
                 .flatMap(existingRecord -> {
@@ -60,7 +62,7 @@ public class ReportingRecordServiceImpl implements ReportingRecordService {
     }
 
     @Override
-    public Mono<Void> delete(Long reportingRunId, Long reportingRecordId) {
+    public Mono<Void> delete(UUID reportingRunId, UUID reportingRecordId) {
         return repository.findById(reportingRecordId)
                 .filter(record -> record.getReportingRunId().equals(reportingRunId))
                 .flatMap(repository::delete);

@@ -5,6 +5,8 @@ import com.firefly.common.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.interfaces.dtos.reporting.v1.ReportingRunDTO;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 public interface ReportingRunService {
 
     /**
@@ -29,7 +31,7 @@ public interface ReportingRunService {
      * @param reportingRunId the unique identifier of the reporting run
      * @return a Mono emitting the requested ReportingRunDTO if found, otherwise an empty Mono
      */
-    Mono<ReportingRunDTO> getById(Long reportingRunId);
+    Mono<ReportingRunDTO> getById(UUID reportingRunId);
 
     /**
      * Updates an existing reporting run identified by its ID with the provided data.
@@ -38,7 +40,7 @@ public interface ReportingRunService {
      * @param dto the new data to update the reporting run with
      * @return a Mono emitting the updated ReportingRunDTO object, or an error if the update fails
      */
-    Mono<ReportingRunDTO> update(Long reportingRunId, ReportingRunDTO dto);
+    Mono<ReportingRunDTO> update(UUID reportingRunId, ReportingRunDTO dto);
 
     /**
      * Deletes a reporting run by its unique identifier.
@@ -46,5 +48,5 @@ public interface ReportingRunService {
      * @param reportingRunId the unique identifier of the reporting run to be deleted
      * @return a Mono signaling the completion of the delete operation
      */
-    Mono<Void> delete(Long reportingRunId);
+    Mono<Void> delete(UUID reportingRunId);
 }

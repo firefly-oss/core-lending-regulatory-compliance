@@ -5,6 +5,8 @@ import com.firefly.common.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.interfaces.dtos.reporting.v1.RegulatorySubmissionDTO;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 public interface RegulatorySubmissionService {
 
     /**
@@ -16,7 +18,7 @@ public interface RegulatorySubmissionService {
      * @return a reactive Mono containing a PaginationResponse object with the list of matching
      *         RegulatorySubmissionDTO objects and associated pagination metadata
      */
-    Mono<PaginationResponse<RegulatorySubmissionDTO>> findAll(Long reportingRunId,
+    Mono<PaginationResponse<RegulatorySubmissionDTO>> findAll(UUID reportingRunId,
                                                               FilterRequest<RegulatorySubmissionDTO> filterRequest);
 
     /**
@@ -26,7 +28,7 @@ public interface RegulatorySubmissionService {
      * @param dto the {@link RegulatorySubmissionDTO} containing the details of the regulatory submission to be created
      * @return a {@link Mono} emitting the created {@link RegulatorySubmissionDTO} object upon successful creation
      */
-    Mono<RegulatorySubmissionDTO> create(Long reportingRunId, RegulatorySubmissionDTO dto);
+    Mono<RegulatorySubmissionDTO> create(UUID reportingRunId, RegulatorySubmissionDTO dto);
 
     /**
      * Retrieves a specific regulatory submission by its unique identifiers.
@@ -35,7 +37,7 @@ public interface RegulatorySubmissionService {
      * @param regulatorySubmissionId the unique identifier of the regulatory submission to be retrieved
      * @return a Mono emitting the requested RegulatorySubmissionDTO if found, otherwise an empty Mono
      */
-    Mono<RegulatorySubmissionDTO> getById(Long reportingRunId, Long regulatorySubmissionId);
+    Mono<RegulatorySubmissionDTO> getById(UUID reportingRunId, UUID regulatorySubmissionId);
 
     /**
      * Updates an existing regulatory submission identified by its reporting run ID and regulatory submission ID
@@ -46,7 +48,7 @@ public interface RegulatorySubmissionService {
      * @param dto the new data to update the regulatory submission, represented as a RegulatorySubmissionDTO
      * @return a Mono emitting the updated RegulatorySubmissionDTO object, or an error if the update fails
      */
-    Mono<RegulatorySubmissionDTO> update(Long reportingRunId, Long regulatorySubmissionId,
+    Mono<RegulatorySubmissionDTO> update(UUID reportingRunId, UUID regulatorySubmissionId,
                                          RegulatorySubmissionDTO dto);
 
     /**
@@ -56,5 +58,5 @@ public interface RegulatorySubmissionService {
      * @param regulatorySubmissionId the unique identifier of the regulatory submission to be deleted
      * @return a Mono indicating the completion of the delete operation
      */
-    Mono<Void> delete(Long reportingRunId, Long regulatorySubmissionId);
+    Mono<Void> delete(UUID reportingRunId, UUID regulatorySubmissionId);
 }

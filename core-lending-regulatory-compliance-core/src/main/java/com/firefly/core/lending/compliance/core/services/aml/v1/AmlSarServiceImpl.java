@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 public class AmlSarServiceImpl implements AmlSarService {
@@ -23,7 +25,7 @@ public class AmlSarServiceImpl implements AmlSarService {
     private AmlSarMapper mapper;
 
     @Override
-    public Mono<PaginationResponse<AmlSarDTO>> findAll(Long amlCaseId, FilterRequest<AmlSarDTO> filterRequest) {
+    public Mono<PaginationResponse<AmlSarDTO>> findAll(UUID amlCaseId, FilterRequest<AmlSarDTO> filterRequest) {
         filterRequest.getFilters().setAmlCaseId(amlCaseId);
         return FilterUtils.createFilter(
                 AmlSar.class,
@@ -32,7 +34,7 @@ public class AmlSarServiceImpl implements AmlSarService {
     }
 
     @Override
-    public Mono<AmlSarDTO> create(Long amlCaseId, AmlSarDTO dto) {
+    public Mono<AmlSarDTO> create(UUID amlCaseId, AmlSarDTO dto) {
         dto.setAmlCaseId(amlCaseId);
         AmlSar entity = mapper.toEntity(dto);
         return repository.save(entity)
@@ -40,14 +42,14 @@ public class AmlSarServiceImpl implements AmlSarService {
     }
 
     @Override
-    public Mono<AmlSarDTO> getById(Long amlCaseId, Long amlSarId) {
+    public Mono<AmlSarDTO> getById(UUID amlCaseId, UUID amlSarId) {
         return repository.findById(amlSarId)
                 .filter(entity -> entity.getAmlCaseId().equals(amlCaseId))
                 .map(mapper::toDTO);
     }
 
     @Override
-    public Mono<AmlSarDTO> update(Long amlCaseId, Long amlSarId, AmlSarDTO dto) {
+    public Mono<AmlSarDTO> update(UUID amlCaseId, UUID amlSarId, AmlSarDTO dto) {
         return repository.findById(amlSarId)
                 .filter(entity -> entity.getAmlCaseId().equals(amlCaseId))
                 .flatMap(existingEntity -> {
@@ -60,7 +62,7 @@ public class AmlSarServiceImpl implements AmlSarService {
     }
 
     @Override
-    public Mono<Void> delete(Long amlCaseId, Long amlSarId) {
+    public Mono<Void> delete(UUID amlCaseId, UUID amlSarId) {
         return repository.findById(amlSarId)
                 .filter(entity -> entity.getAmlCaseId().equals(amlCaseId))
                 .flatMap(repository::delete);

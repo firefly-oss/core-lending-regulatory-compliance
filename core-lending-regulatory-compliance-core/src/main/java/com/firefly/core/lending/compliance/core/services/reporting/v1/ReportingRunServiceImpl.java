@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 public class ReportingRunServiceImpl implements ReportingRunService {
@@ -37,14 +39,14 @@ public class ReportingRunServiceImpl implements ReportingRunService {
     }
 
     @Override
-    public Mono<ReportingRunDTO> getById(Long reportingRunId) {
+    public Mono<ReportingRunDTO> getById(UUID reportingRunId) {
         return Mono.from(repository.findById(reportingRunId))
                 .map(mapper::toDTO)
                 .switchIfEmpty(Mono.empty());
     }
 
     @Override
-    public Mono<ReportingRunDTO> update(Long reportingRunId, ReportingRunDTO dto) {
+    public Mono<ReportingRunDTO> update(UUID reportingRunId, ReportingRunDTO dto) {
         return Mono.from(repository.findById(reportingRunId))
                 .flatMap(existing -> {
                     ReportingRun updatedEntity = mapper.toEntity(dto);
@@ -55,7 +57,7 @@ public class ReportingRunServiceImpl implements ReportingRunService {
     }
 
     @Override
-    public Mono<Void> delete(Long reportingRunId) {
+    public Mono<Void> delete(UUID reportingRunId) {
         return Mono.from(repository.findById(reportingRunId))
                 .flatMap(existing -> Mono.from(repository.delete(existing)))
                 .then();

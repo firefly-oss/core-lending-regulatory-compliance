@@ -5,6 +5,8 @@ import com.firefly.common.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.interfaces.dtos.aml.v1.AmlSarDTO;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 public interface AmlSarService {
 
     /**
@@ -15,7 +17,7 @@ public interface AmlSarService {
      * @param filterRequest the filtering and pagination criteria for querying the AML SAR records, encapsulated in a {@link FilterRequest} object
      * @return a reactive Mono containing a {@link PaginationResponse} object with a list of matching {@link AmlSarDTO} objects and associated pagination metadata
      */
-    Mono<PaginationResponse<AmlSarDTO>> findAll(Long amlCaseId, FilterRequest<AmlSarDTO> filterRequest);
+    Mono<PaginationResponse<AmlSarDTO>> findAll(UUID amlCaseId, FilterRequest<AmlSarDTO> filterRequest);
 
     /**
      * Creates a new AML SAR (Suspicious Activity Report) associated with the specified AML case ID.
@@ -24,7 +26,7 @@ public interface AmlSarService {
      * @param dto the {@link AmlSarDTO} object containing the details of the SAR to be created
      * @return a {@link Mono} emitting the created {@link AmlSarDTO} object upon successful creation
      */
-    Mono<AmlSarDTO> create(Long amlCaseId, AmlSarDTO dto);
+    Mono<AmlSarDTO> create(UUID amlCaseId, AmlSarDTO dto);
 
     /**
      * Retrieves an AML SAR (Suspicious Activity Report) resource by its unique identifier
@@ -35,7 +37,7 @@ public interface AmlSarService {
      * @return a {@link Mono} emitting the requested {@link AmlSarDTO} if found,
      *         or an empty {@link Mono} if the SAR does not exist
      */
-    Mono<AmlSarDTO> getById(Long amlCaseId, Long amlSarId);
+    Mono<AmlSarDTO> getById(UUID amlCaseId, UUID amlSarId);
 
     /**
      * Updates an existing AML SAR (Suspicious Activity Report) record associated with a specific AML case
@@ -46,7 +48,7 @@ public interface AmlSarService {
      * @param dto the {@link AmlSarDTO} object containing the updated details for the SAR
      * @return a {@link Mono} emitting the updated {@link AmlSarDTO} object upon successful update, or an error if the update fails
      */
-    Mono<AmlSarDTO> update(Long amlCaseId, Long amlSarId, AmlSarDTO dto);
+    Mono<AmlSarDTO> update(UUID amlCaseId, UUID amlSarId, AmlSarDTO dto);
 
     /**
      * Deletes a specific AML SAR entry associated with a given AML case.
@@ -55,5 +57,5 @@ public interface AmlSarService {
      * @param amlSarId the unique identifier of the AML SAR to be deleted
      * @return a {@link Mono} signaling the completion of the delete operation
      */
-    Mono<Void> delete(Long amlCaseId, Long amlSarId);
+    Mono<Void> delete(UUID amlCaseId, UUID amlSarId);
 }

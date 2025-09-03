@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 public class AmlCaseServiceImpl implements AmlCaseService {
@@ -39,13 +41,13 @@ public class AmlCaseServiceImpl implements AmlCaseService {
     }
 
     @Override
-    public Mono<AmlCaseDTO> getById(Long amlCaseId) {
+    public Mono<AmlCaseDTO> getById(UUID amlCaseId) {
         return repository.findById(amlCaseId)
                 .map(mapper::toDTO);
     }
 
     @Override
-    public Mono<AmlCaseDTO> update(Long amlCaseId, AmlCaseDTO dto) {
+    public Mono<AmlCaseDTO> update(UUID amlCaseId, AmlCaseDTO dto) {
         return repository.findById(amlCaseId)
                 .flatMap(existing -> {
                     AmlCase updatedEntity = mapper.toEntity(dto);
@@ -56,7 +58,7 @@ public class AmlCaseServiceImpl implements AmlCaseService {
     }
 
     @Override
-    public Mono<Void> delete(Long amlCaseId) {
+    public Mono<Void> delete(UUID amlCaseId) {
         return repository.deleteById(amlCaseId);
     }
 }

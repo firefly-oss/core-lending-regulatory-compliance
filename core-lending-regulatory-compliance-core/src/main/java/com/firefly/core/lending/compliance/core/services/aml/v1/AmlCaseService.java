@@ -5,6 +5,8 @@ import com.firefly.common.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.interfaces.dtos.aml.v1.AmlCaseDTO;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 public interface AmlCaseService {
 
     /**
@@ -31,7 +33,7 @@ public interface AmlCaseService {
      * @param amlCaseId the unique identifier of the AML case to be retrieved
      * @return a Mono emitting the requested AmlCaseDTO if found, otherwise an empty Mono
      */
-    Mono<AmlCaseDTO> getById(Long amlCaseId);
+    Mono<AmlCaseDTO> getById(UUID amlCaseId);
 
     /**
      * Updates an existing AML case identified by its ID with the provided details.
@@ -40,7 +42,7 @@ public interface AmlCaseService {
      * @param dto the new data to update the AML case with, represented as an {@link AmlCaseDTO}
      * @return a {@link Mono} emitting the updated {@link AmlCaseDTO} object, or an error if the update fails
      */
-    Mono<AmlCaseDTO> update(Long amlCaseId, AmlCaseDTO dto);
+    Mono<AmlCaseDTO> update(UUID amlCaseId, AmlCaseDTO dto);
 
     /**
      * Deletes an AML case identified by its unique AML case ID.
@@ -48,5 +50,5 @@ public interface AmlCaseService {
      * @param amlCaseId the unique identifier of the AML case to be deleted
      * @return a Mono signaling the completion of the delete operation
      */
-    Mono<Void> delete(Long amlCaseId);
+    Mono<Void> delete(UUID amlCaseId);
 }

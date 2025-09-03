@@ -12,6 +12,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import reactor.core.publisher.Mono;
 
+import java.util.UUID;
+
 @Service
 @Transactional
 public class RegulatorySubmissionServiceImpl implements RegulatorySubmissionService {
@@ -23,7 +25,7 @@ public class RegulatorySubmissionServiceImpl implements RegulatorySubmissionServ
     private RegulatorySubmissionMapper mapper;
 
     @Override
-    public Mono<PaginationResponse<RegulatorySubmissionDTO>> findAll(Long reportingRunId, FilterRequest<RegulatorySubmissionDTO> filterRequest) {
+    public Mono<PaginationResponse<RegulatorySubmissionDTO>> findAll(UUID reportingRunId, FilterRequest<RegulatorySubmissionDTO> filterRequest) {
         filterRequest.getFilters().setReportingRunId(reportingRunId);
         return FilterUtils.createFilter(
                 RegulatorySubmission.class,
@@ -32,7 +34,7 @@ public class RegulatorySubmissionServiceImpl implements RegulatorySubmissionServ
     }
 
     @Override
-    public Mono<RegulatorySubmissionDTO> create(Long reportingRunId, RegulatorySubmissionDTO dto) {
+    public Mono<RegulatorySubmissionDTO> create(UUID reportingRunId, RegulatorySubmissionDTO dto) {
         dto.setReportingRunId(reportingRunId);
         RegulatorySubmission entity = mapper.toEntity(dto);
         return Mono.just(entity)
@@ -46,14 +48,14 @@ public class RegulatorySubmissionServiceImpl implements RegulatorySubmissionServ
     }
 
     @Override
-    public Mono<RegulatorySubmissionDTO> getById(Long reportingRunId, Long regulatorySubmissionId) {
+    public Mono<RegulatorySubmissionDTO> getById(UUID reportingRunId, UUID regulatorySubmissionId) {
         return repository.findById(regulatorySubmissionId)
                 .filter(entity -> entity.getReportingRunId().equals(reportingRunId))
                 .map(mapper::toDTO);
     }
 
     @Override
-    public Mono<RegulatorySubmissionDTO> update(Long reportingRunId, Long regulatorySubmissionId, RegulatorySubmissionDTO dto) {
+    public Mono<RegulatorySubmissionDTO> update(UUID reportingRunId, UUID regulatorySubmissionId, RegulatorySubmissionDTO dto) {
         return repository.findById(regulatorySubmissionId)
                 .filter(entity -> entity.getReportingRunId().equals(reportingRunId))
                 .flatMap(existing -> {
@@ -68,7 +70,7 @@ public class RegulatorySubmissionServiceImpl implements RegulatorySubmissionServ
     }
 
     @Override
-    public Mono<Void> delete(Long reportingRunId, Long regulatorySubmissionId) {
+    public Mono<Void> delete(UUID reportingRunId, UUID regulatorySubmissionId) {
         return repository.findById(regulatorySubmissionId)
                 .filter(entity -> entity.getReportingRunId().equals(reportingRunId))
                 .flatMap(repository::delete);
