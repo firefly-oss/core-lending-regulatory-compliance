@@ -52,7 +52,7 @@ import org.springframework.web.reactive.config.EnableWebFlux;
         ),
         servers = {
                 @Server(
-                        url = "http://core.catalis.vc/loan-compliance",
+                        url = "http://core.getfirefly.io/loan-compliance",
                         description = "Development Environment"
                 ),
                 @Server(
