@@ -31,7 +31,7 @@ core-lending-regulatory-compliance/
 
 ### Technology Stack
 
-- **Java 21**: Utilizing the latest Java features including virtual threads and pattern matching
+- **Java 25**: Utilizing the latest Java features including virtual threads and pattern matching
 - **Spring Boot 3.x**: Modern application framework with native compilation support
 - **Spring WebFlux**: Reactive web framework for non-blocking I/O
 - **R2DBC**: Reactive database connectivity for PostgreSQL
@@ -211,7 +211,7 @@ The service provides comprehensive RESTful APIs organized by domain:
 
 ### Prerequisites
 
-- **Java 21** or higher (with virtual threads support)
+- **Java 25** or higher (with virtual threads support)
 - **Maven 3.8** or higher
 - **PostgreSQL 14** or higher (with UUID and JSON support)
 - **Docker** (optional, for containerized deployment)
@@ -598,4 +598,4 @@ This project is licensed under the **Apache License 2.0** - see the [LICENSE](LI
 
 ---
 
-**Built with ❤️ by the Firefly team**
+**Built with by the Firefly team**
