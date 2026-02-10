@@ -17,9 +17,9 @@
 
 package com.firefly.core.lending.compliance.core.services.reporting.v1;
 
-import com.firefly.common.core.filters.FilterRequest;
-import com.firefly.common.core.filters.FilterUtils;
-import com.firefly.common.core.queries.PaginationResponse;
+import org.fireflyframework.core.filters.FilterRequest;
+import org.fireflyframework.core.filters.FilterUtils;
+import org.fireflyframework.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.core.mappers.reporting.v1.RegulatorySubmissionMapper;
 import com.firefly.core.lending.compliance.interfaces.dtos.reporting.v1.RegulatorySubmissionDTO;
 import com.firefly.core.lending.compliance.models.entities.reporting.v1.RegulatorySubmission;

@@ -19,7 +19,7 @@ package com.firefly.core.lending.compliance.interfaces.dtos.reporting.v1;
 
 import com.firefly.core.lending.compliance.interfaces.enums.reporting.v1.CurrencyCodeEnum;
 import com.firefly.core.lending.compliance.interfaces.enums.reporting.v1.RecordTypeEnum;
-import com.firefly.core.utils.annotations.FilterableId;
+import org.fireflyframework.utils.annotations.FilterableId;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -17,9 +17,9 @@
 
 package com.firefly.core.lending.compliance.core.services.aml.v1;
 
-import com.firefly.common.core.filters.FilterRequest;
-import com.firefly.common.core.filters.FilterUtils;
-import com.firefly.common.core.queries.PaginationResponse;
+import org.fireflyframework.core.filters.FilterRequest;
+import org.fireflyframework.core.filters.FilterUtils;
+import org.fireflyframework.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.core.mappers.aml.v1.AmlCaseMapper;
 import com.firefly.core.lending.compliance.interfaces.dtos.aml.v1.AmlCaseDTO;
 import com.firefly.core.lending.compliance.models.entities.aml.v1.AmlCase;

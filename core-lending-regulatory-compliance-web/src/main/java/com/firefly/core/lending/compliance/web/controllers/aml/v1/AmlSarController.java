@@ -17,8 +17,8 @@
 
 package com.firefly.core.lending.compliance.web.controllers.aml.v1;
 
-import com.firefly.common.core.filters.FilterRequest;
-import com.firefly.common.core.queries.PaginationResponse;
+import org.fireflyframework.core.filters.FilterRequest;
+import org.fireflyframework.core.queries.PaginationResponse;
 import com.firefly.core.lending.compliance.core.services.aml.v1.AmlSarService;
 import com.firefly.core.lending.compliance.interfaces.dtos.aml.v1.AmlSarDTO;
 import io.swagger.v3.oas.annotations.Operation;
