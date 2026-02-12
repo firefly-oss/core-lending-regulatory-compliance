@@ -11,7 +11,6 @@
         <relativePath/>
     </parent>
 
-    <groupId>com.firefly</groupId>
     <artifactId>core-lending-regulatory-compliance</artifactId>
     <packaging>pom</packaging>
     <modules>
