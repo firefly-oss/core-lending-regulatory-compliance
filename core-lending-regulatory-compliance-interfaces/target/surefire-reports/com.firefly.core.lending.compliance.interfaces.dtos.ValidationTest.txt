@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.firefly.core.lending.compliance.interfaces.dtos.ValidationTest
+-------------------------------------------------------------------------------
+Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.190 s -- in com.firefly.core.lending.compliance.interfaces.dtos.ValidationTest
