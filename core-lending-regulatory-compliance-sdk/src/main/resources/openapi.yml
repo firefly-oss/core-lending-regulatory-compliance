@@ -1,0 +1,1487 @@
+openapi: 3.0.1
+info:
+  title: OpenAPI definition
+  version: v0
+servers:
+- url: http://localhost:18080
+  description: Generated server url
+tags:
+- name: AmlSar
+  description: Operations on SAR (Suspicious Activity Reports) within an AML case
+- name: ReportingRecord
+  description: Operations for Reporting Records within a Reporting Run
+- name: RegulatorySubmission
+  description: Operations for Regulatory Submissions within a Reporting Run
+- name: AmlCase
+  description: Operations on AML (Anti-Money Laundering) Cases
+- name: ReportingRun
+  description: Operations for Reporting Runs
+- name: AmlAction
+  description: Operations on actions within an AML case
+paths:
+  /api/v1/reporting-runs/{reportingRunId}:
+    get:
+      tags:
+      - ReportingRun
+      summary: Get a reporting run by ID
+      operationId: getById
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReportingRunDTO"
+    put:
+      tags:
+      - ReportingRun
+      summary: Update a reporting run
+      operationId: update
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportingRunDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReportingRunDTO"
+    delete:
+      tags:
+      - ReportingRun
+      summary: Delete a reporting run
+      operationId: delete
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /api/v1/reporting-runs/{reportingRunId}/submissions/{regulatorySubmissionId}:
+    get:
+      tags:
+      - RegulatorySubmission
+      summary: Get a regulatory submission by ID
+      operationId: getById_1
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: regulatorySubmissionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RegulatorySubmissionDTO"
+    put:
+      tags:
+      - RegulatorySubmission
+      summary: Update a regulatory submission
+      operationId: update_1
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: regulatorySubmissionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegulatorySubmissionDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RegulatorySubmissionDTO"
+    delete:
+      tags:
+      - RegulatorySubmission
+      summary: Delete a regulatory submission record
+      operationId: delete_1
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: regulatorySubmissionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /api/v1/reporting-runs/{reportingRunId}/records/{reportingRecordId}:
+    get:
+      tags:
+      - ReportingRecord
+      summary: Get a reporting record by ID
+      operationId: getById_2
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: reportingRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReportingRecordDTO"
+    put:
+      tags:
+      - ReportingRecord
+      summary: Update a reporting record
+      operationId: update_2
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: reportingRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportingRecordDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReportingRecordDTO"
+    delete:
+      tags:
+      - ReportingRecord
+      summary: Delete a reporting record
+      operationId: delete_2
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: reportingRecordId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /api/v1/aml-cases/{amlCaseId}:
+    get:
+      tags:
+      - AmlCase
+      summary: Get an AML case by ID
+      operationId: getById_3
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlCaseDTO"
+    put:
+      tags:
+      - AmlCase
+      summary: Update an AML case
+      operationId: update_3
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AmlCaseDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlCaseDTO"
+    delete:
+      tags:
+      - AmlCase
+      summary: Delete an AML case
+      operationId: delete_3
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /api/v1/aml-cases/{amlCaseId}/sars/{amlSarId}:
+    get:
+      tags:
+      - AmlSar
+      summary: Get a SAR by ID
+      operationId: getById_4
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: amlSarId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlSarDTO"
+    put:
+      tags:
+      - AmlSar
+      summary: Update a SAR record
+      operationId: update_4
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: amlSarId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AmlSarDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlSarDTO"
+    delete:
+      tags:
+      - AmlSar
+      summary: Delete a SAR record
+      operationId: delete_4
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: amlSarId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /api/v1/aml-cases/{amlCaseId}/actions/{amlActionId}:
+    get:
+      tags:
+      - AmlAction
+      summary: Get an AML action by ID
+      operationId: getById_5
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: amlActionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlActionDTO"
+    put:
+      tags:
+      - AmlAction
+      summary: Update an AML action
+      operationId: update_5
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: amlActionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AmlActionDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlActionDTO"
+    delete:
+      tags:
+      - AmlAction
+      summary: Delete an AML action
+      operationId: delete_5
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: amlActionId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+  /api/v1/reporting-runs:
+    get:
+      tags:
+      - ReportingRun
+      summary: List or search reporting runs
+      operationId: findAll
+      parameters:
+      - name: filterRequest
+        in: query
+        required: true
+        schema:
+          $ref: "#/components/schemas/FilterRequestReportingRunDTO"
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PaginationResponseReportingRunDTO"
+    post:
+      tags:
+      - ReportingRun
+      summary: Create a new reporting run
+      operationId: create
+      parameters:
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportingRunDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReportingRunDTO"
+  /api/v1/reporting-runs/{reportingRunId}/submissions:
+    get:
+      tags:
+      - RegulatorySubmission
+      summary: List or search regulatory submissions for a specific run
+      operationId: findAll_1
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: filterRequest
+        in: query
+        required: true
+        schema:
+          $ref: "#/components/schemas/FilterRequestRegulatorySubmissionDTO"
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PaginationResponseRegulatorySubmissionDTO"
+    post:
+      tags:
+      - RegulatorySubmission
+      summary: Create a new regulatory submission
+      operationId: create_1
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/RegulatorySubmissionDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/RegulatorySubmissionDTO"
+  /api/v1/reporting-runs/{reportingRunId}/records:
+    get:
+      tags:
+      - ReportingRecord
+      summary: List or search reporting records for a specific run
+      operationId: findAll_2
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: filterRequest
+        in: query
+        required: true
+        schema:
+          $ref: "#/components/schemas/FilterRequestReportingRecordDTO"
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PaginationResponseReportingRecordDTO"
+    post:
+      tags:
+      - ReportingRecord
+      summary: Create a new reporting record
+      operationId: create_2
+      parameters:
+      - name: reportingRunId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ReportingRecordDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/ReportingRecordDTO"
+  /api/v1/aml-cases:
+    get:
+      tags:
+      - AmlCase
+      summary: List or search AML cases
+      operationId: findAll_3
+      parameters:
+      - name: filterRequest
+        in: query
+        required: true
+        schema:
+          $ref: "#/components/schemas/FilterRequestAmlCaseDTO"
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PaginationResponseAmlCaseDTO"
+    post:
+      tags:
+      - AmlCase
+      summary: Create a new AML case
+      operationId: create_3
+      parameters:
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AmlCaseDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlCaseDTO"
+  /api/v1/aml-cases/{amlCaseId}/sars:
+    get:
+      tags:
+      - AmlSar
+      summary: List or search SARs for a given AML case
+      operationId: findAll_4
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: filterRequest
+        in: query
+        required: true
+        schema:
+          $ref: "#/components/schemas/FilterRequestAmlSarDTO"
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PaginationResponseAmlSarDTO"
+    post:
+      tags:
+      - AmlSar
+      summary: Create a new SAR (Suspicious Activity Report)
+      operationId: create_4
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AmlSarDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlSarDTO"
+  /api/v1/aml-cases/{amlCaseId}/actions:
+    get:
+      tags:
+      - AmlAction
+      summary: List or search AML actions for a case
+      operationId: findAll_5
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: filterRequest
+        in: query
+        required: true
+        schema:
+          $ref: "#/components/schemas/FilterRequestAmlActionDTO"
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/PaginationResponseAmlActionDTO"
+    post:
+      tags:
+      - AmlAction
+      summary: Create a new AML action
+      operationId: create_5
+      parameters:
+      - name: amlCaseId
+        in: path
+        required: true
+        schema:
+          type: string
+          format: uuid
+      - name: X-Idempotency-Key
+        in: header
+        description: "Unique key for idempotent requests. If provided, ensures that\
+          \ identical requests with the same key will only be processed once."
+        required: false
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/AmlActionDTO"
+        required: true
+      responses:
+        "200":
+          description: OK
+          content:
+            '*/*':
+              schema:
+                $ref: "#/components/schemas/AmlActionDTO"
+components:
+  schemas:
+    ReportingRunDTO:
+      required:
+      - reportType
+      - reportingPeriodEnd
+      - reportingPeriodStart
+      - runStatus
+      type: object
+      properties:
+        reportingRunId:
+          type: string
+          format: uuid
+          readOnly: true
+        reportType:
+          type: string
+          enum:
+          - CIRBE
+          - FINREP
+          - AML
+          - COREP
+          - SEPBLAC
+        reportingPeriodStart:
+          type: string
+          format: date
+        reportingPeriodEnd:
+          type: string
+          format: date
+        runStatus:
+          type: string
+          enum:
+          - OPEN
+          - IN_PROGRESS
+          - COMPLETED
+          - FAILED
+          - CANCELLED
+        remarks:
+          maxLength: 1000
+          minLength: 0
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    RegulatorySubmissionDTO:
+      required:
+      - reportingRunId
+      - submissionDate
+      - submissionRef
+      - submissionStatus
+      type: object
+      properties:
+        regulatorySubmissionId:
+          type: string
+          format: uuid
+          readOnly: true
+        reportingRunId:
+          type: string
+          format: uuid
+        submissionRef:
+          maxLength: 100
+          minLength: 0
+          type: string
+        submissionDate:
+          type: string
+          format: date
+        submissionStatus:
+          type: string
+          enum:
+          - SUBMITTED
+          - ACCEPTED
+          - REJECTED
+          - REVISED
+          - SUPERSEDED
+        responseDetails:
+          maxLength: 2000
+          minLength: 0
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    ReportingRecordDTO:
+      required:
+      - currencyCode
+      - customerId
+      - isIncluded
+      - loanServicingCaseId
+      - recordType
+      - reportedAmount
+      - reportingRunId
+      - transactionId
+      type: object
+      properties:
+        reportingRecordId:
+          type: string
+          format: uuid
+          readOnly: true
+        reportingRunId:
+          type: string
+          format: uuid
+        loanServicingCaseId:
+          type: string
+          format: uuid
+        customerId:
+          type: string
+          format: uuid
+        transactionId:
+          type: string
+          format: uuid
+        recordType:
+          type: string
+          enum:
+          - EXPOSURE
+          - DELINQUENCY
+          - AML_TXN
+          - COLLATERAL
+          - PROVISION
+        reportedAmount:
+          minimum: 0.0
+          exclusiveMinimum: true
+          type: number
+        currencyCode:
+          type: string
+          enum:
+          - EUR
+          - USD
+          - GBP
+          - CHF
+        additionalData:
+          maxLength: 5000
+          minLength: 0
+          type: string
+        isIncluded:
+          type: boolean
+        exclusionReason:
+          maxLength: 500
+          minLength: 0
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    AmlCaseDTO:
+      required:
+      - amlCaseStatus
+      - caseOpenedAt
+      - customerId
+      - reportingRunId
+      - riskLevel
+      - transactionId
+      type: object
+      properties:
+        amlCaseId:
+          type: string
+          format: uuid
+          readOnly: true
+        reportingRunId:
+          type: string
+          format: uuid
+        customerId:
+          type: string
+          format: uuid
+        transactionId:
+          type: string
+          format: uuid
+        amlCaseStatus:
+          type: string
+          enum:
+          - OPEN
+          - INVESTIGATING
+          - REPORTED
+          - CLOSED
+          - ESCALATED
+        caseOpenedAt:
+          type: string
+          format: date
+        caseClosedAt:
+          type: string
+          format: date
+        riskLevel:
+          type: string
+          enum:
+          - LOW
+          - MEDIUM
+          - HIGH
+          - CRITICAL
+        notes:
+          maxLength: 2000
+          minLength: 0
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    AmlSarDTO:
+      required:
+      - amlCaseId
+      - sarDate
+      - sarReference
+      - sarStatus
+      type: object
+      properties:
+        amlSarId:
+          type: string
+          format: uuid
+          readOnly: true
+        amlCaseId:
+          type: string
+          format: uuid
+        sarReference:
+          maxLength: 100
+          minLength: 0
+          type: string
+        sarDate:
+          type: string
+          format: date
+        sarStatus:
+          type: string
+          enum:
+          - DRAFT
+          - SUBMITTED
+          - FEEDBACK_RECEIVED
+          - CLOSED
+          - AMENDED
+        authorityFeedback:
+          maxLength: 2000
+          minLength: 0
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    AmlActionDTO:
+      required:
+      - actionDate
+      - actionType
+      - amlCaseId
+      - outcome
+      type: object
+      properties:
+        amlActionId:
+          type: string
+          format: uuid
+          readOnly: true
+        amlCaseId:
+          type: string
+          format: uuid
+        actionDate:
+          type: string
+          format: date-time
+        actionType:
+          type: string
+          enum:
+          - REVIEW
+          - CUSTOMER_CONTACT
+          - REPORT_TO_AUTHORITY
+          - ACCOUNT_FREEZE
+          - DOCUMENT_REQUEST
+        outcome:
+          maxLength: 1000
+          minLength: 0
+          type: string
+        createdAt:
+          type: string
+          format: date-time
+        updatedAt:
+          type: string
+          format: date-time
+    FilterOptions:
+      type: object
+      properties:
+        caseInsensitiveStrings:
+          type: boolean
+        includeInheritedFields:
+          type: boolean
+      description: Filter options for customizing filter behavior
+    FilterRequestReportingRunDTO:
+      required:
+      - pagination
+      type: object
+      properties:
+        filters:
+          $ref: "#/components/schemas/ReportingRunDTO"
+        rangeFilters:
+          $ref: "#/components/schemas/RangeFilter"
+        pagination:
+          $ref: "#/components/schemas/PaginationRequest"
+        options:
+          $ref: "#/components/schemas/FilterOptions"
+      description: Generic filter request that includes both filter criteria and pagination
+    PaginationRequest:
+      type: object
+      properties:
+        pageNumber:
+          type: integer
+          description: The zero-based page number to retrieve.
+          format: int32
+          example: 0
+          default: 0
+        pageSize:
+          type: integer
+          description: The number of items per page.
+          format: int32
+          example: 10
+          default: 10
+        sortBy:
+          type: string
+          description: The field to sort the results by.
+          example: name
+        sortDirection:
+          type: string
+          description: "The direction of sorting, either ASC or DESC."
+          example: DESC
+          default: DESC
+      description: "Represents a pagination request for retrieving paginated results,\
+        \ including page number, size, sort field, and direction."
+    RangeFilter:
+      type: object
+      properties:
+        ranges:
+          type: object
+          additionalProperties:
+            $ref: "#/components/schemas/RangeObject"
+          description: Map of field names to their range criteria
+      description: Represents range filters for numeric fields
+    RangeObject:
+      type: object
+      properties:
+        from:
+          type: object
+          description: Start value of the range
+        to:
+          type: object
+          description: End value of the range
+      description: Represents a range with from and to values
+    PaginationResponseReportingRunDTO:
+      type: object
+      properties:
+        content:
+          type: array
+          description: The list of items for the current page.
+          items:
+            $ref: "#/components/schemas/ReportingRunDTO"
+        totalElements:
+          type: integer
+          description: The total number of elements across all pages.
+          format: int64
+        totalPages:
+          type: integer
+          description: The total number of pages based on the data size and page size.
+          format: int32
+        currentPage:
+          type: integer
+          description: "The current page number, typically zero-based."
+          format: int32
+      description: Represents a paginated response containing a list of items and
+        pagination metadata.
+    FilterRequestRegulatorySubmissionDTO:
+      required:
+      - pagination
+      type: object
+      properties:
+        filters:
+          $ref: "#/components/schemas/RegulatorySubmissionDTO"
+        rangeFilters:
+          $ref: "#/components/schemas/RangeFilter"
+        pagination:
+          $ref: "#/components/schemas/PaginationRequest"
+        options:
+          $ref: "#/components/schemas/FilterOptions"
+      description: Generic filter request that includes both filter criteria and pagination
+    PaginationResponseRegulatorySubmissionDTO:
+      type: object
+      properties:
+        content:
+          type: array
+          description: The list of items for the current page.
+          items:
+            $ref: "#/components/schemas/RegulatorySubmissionDTO"
+        totalElements:
+          type: integer
+          description: The total number of elements across all pages.
+          format: int64
+        totalPages:
+          type: integer
+          description: The total number of pages based on the data size and page size.
+          format: int32
+        currentPage:
+          type: integer
+          description: "The current page number, typically zero-based."
+          format: int32
+      description: Represents a paginated response containing a list of items and
+        pagination metadata.
+    FilterRequestReportingRecordDTO:
+      required:
+      - pagination
+      type: object
+      properties:
+        filters:
+          $ref: "#/components/schemas/ReportingRecordDTO"
+        rangeFilters:
+          $ref: "#/components/schemas/RangeFilter"
+        pagination:
+          $ref: "#/components/schemas/PaginationRequest"
+        options:
+          $ref: "#/components/schemas/FilterOptions"
+      description: Generic filter request that includes both filter criteria and pagination
+    PaginationResponseReportingRecordDTO:
+      type: object
+      properties:
+        content:
+          type: array
+          description: The list of items for the current page.
+          items:
+            $ref: "#/components/schemas/ReportingRecordDTO"
+        totalElements:
+          type: integer
+          description: The total number of elements across all pages.
+          format: int64
+        totalPages:
+          type: integer
+          description: The total number of pages based on the data size and page size.
+          format: int32
+        currentPage:
+          type: integer
+          description: "The current page number, typically zero-based."
+          format: int32
+      description: Represents a paginated response containing a list of items and
+        pagination metadata.
+    FilterRequestAmlCaseDTO:
+      required:
+      - pagination
+      type: object
+      properties:
+        filters:
+          $ref: "#/components/schemas/AmlCaseDTO"
+        rangeFilters:
+          $ref: "#/components/schemas/RangeFilter"
+        pagination:
+          $ref: "#/components/schemas/PaginationRequest"
+        options:
+          $ref: "#/components/schemas/FilterOptions"
+      description: Generic filter request that includes both filter criteria and pagination
+    PaginationResponseAmlCaseDTO:
+      type: object
+      properties:
+        content:
+          type: array
+          description: The list of items for the current page.
+          items:
+            $ref: "#/components/schemas/AmlCaseDTO"
+        totalElements:
+          type: integer
+          description: The total number of elements across all pages.
+          format: int64
+        totalPages:
+          type: integer
+          description: The total number of pages based on the data size and page size.
+          format: int32
+        currentPage:
+          type: integer
+          description: "The current page number, typically zero-based."
+          format: int32
+      description: Represents a paginated response containing a list of items and
+        pagination metadata.
+    FilterRequestAmlSarDTO:
+      required:
+      - pagination
+      type: object
+      properties:
+        filters:
+          $ref: "#/components/schemas/AmlSarDTO"
+        rangeFilters:
+          $ref: "#/components/schemas/RangeFilter"
+        pagination:
+          $ref: "#/components/schemas/PaginationRequest"
+        options:
+          $ref: "#/components/schemas/FilterOptions"
+      description: Generic filter request that includes both filter criteria and pagination
+    PaginationResponseAmlSarDTO:
+      type: object
+      properties:
+        content:
+          type: array
+          description: The list of items for the current page.
+          items:
+            $ref: "#/components/schemas/AmlSarDTO"
+        totalElements:
+          type: integer
+          description: The total number of elements across all pages.
+          format: int64
+        totalPages:
+          type: integer
+          description: The total number of pages based on the data size and page size.
+          format: int32
+        currentPage:
+          type: integer
+          description: "The current page number, typically zero-based."
+          format: int32
+      description: Represents a paginated response containing a list of items and
+        pagination metadata.
+    FilterRequestAmlActionDTO:
+      required:
+      - pagination
+      type: object
+      properties:
+        filters:
+          $ref: "#/components/schemas/AmlActionDTO"
+        rangeFilters:
+          $ref: "#/components/schemas/RangeFilter"
+        pagination:
+          $ref: "#/components/schemas/PaginationRequest"
+        options:
+          $ref: "#/components/schemas/FilterOptions"
+      description: Generic filter request that includes both filter criteria and pagination
+    PaginationResponseAmlActionDTO:
+      type: object
+      properties:
+        content:
+          type: array
+          description: The list of items for the current page.
+          items:
+            $ref: "#/components/schemas/AmlActionDTO"
+        totalElements:
+          type: integer
+          description: The total number of elements across all pages.
+          format: int64
+        totalPages:
+          type: integer
+          description: The total number of pages based on the data size and page size.
+          format: int32
+        currentPage:
+          type: integer
+          description: "The current page number, typically zero-based."
+          format: int32
+      description: Represents a paginated response containing a list of items and
+        pagination metadata.
