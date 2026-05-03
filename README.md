@@ -4,7 +4,7 @@ A microservice component of the **Firefly OpenCore Banking Platform** that handl
 
 ## Overview
 
-The Core Lending Regulatory Compliance service is a critical component of the Firefly OpenCore Banking Platform, developed by **Firefly Software Solutions Inc** under the **Apache 2.0 license**. This microservice is responsible for managing regulatory compliance requirements for lending operations, ensuring financial institutions meet their regulatory obligations.
+The Core Lending Regulatory Compliance service is a critical component of the Firefly OpenCore Banking Platform, developed by **Firefly Software Foundation** under the **Apache 2.0 license**. This microservice is responsible for managing regulatory compliance requirements for lending operations, ensuring financial institutions meet their regulatory obligations.
 
 ### Key Features
 
@@ -583,7 +583,7 @@ This project is licensed under the **Apache License 2.0** - see the [LICENSE](LI
 
 ## About Firefly
 
-**Firefly Software Solutions Inc** develops the Firefly OpenCore Banking Platform, a comprehensive, cloud-native banking solution designed for modern financial institutions.
+**Firefly Software Foundation** develops the Firefly OpenCore Banking Platform, a comprehensive, cloud-native banking solution designed for modern financial institutions.
 
 - **Website**: [getfirefly.io](https://getfirefly.io)
 - **GitHub Organization**: [firefly-oss](https://github.com/firefly-oss)
