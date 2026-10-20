@@ -12,6 +12,7 @@
     </parent>
 
     <artifactId>core-lending-regulatory-compliance</artifactId>
+    <name>core-lending-regulatory-compliance</name>
     <packaging>pom</packaging>
     <modules>
         <module>core-lending-regulatory-compliance-core</module>

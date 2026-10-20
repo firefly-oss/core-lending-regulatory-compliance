@@ -10,6 +10,7 @@
     </parent>
 
     <artifactId>core-lending-regulatory-compliance-core</artifactId>
+    <name>core-lending-regulatory-compliance-core</name>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
