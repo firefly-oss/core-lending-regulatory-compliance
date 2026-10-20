@@ -574,7 +574,7 @@ Typical performance characteristics:
 ### Support and Documentation
 
 - **GitHub Issues**: [Report bugs and feature requests](https://github.com/firefly-oss/core-lending-regulatory-compliance/issues)
-- **Documentation**: [Comprehensive documentation](https://docs.getfirefly.io)
+- **Documentation**: [Comprehensive documentation](https://docs.fireflysoftware.io)
 - **Community**: [Join our community discussions](https://github.com/firefly-oss/core-lending-regulatory-compliance/discussions)
 
 ## License
@@ -585,9 +585,9 @@ This project is licensed under the **Apache License 2.0** - see the [LICENSE](LI
 
 **Firefly Software Foundation** develops the Firefly OpenCore Banking Platform, a comprehensive, cloud-native banking solution designed for modern financial institutions.
 
-- **Website**: [getfirefly.io](https://getfirefly.io)
+- **Website**: [fireflysoftware.io](https://fireflysoftware.io)
 - **GitHub Organization**: [firefly-oss](https://github.com/firefly-oss)
-- **Documentation**: [docs.getfirefly.io](https://docs.getfirefly.io)
+- **Documentation**: [docs.fireflysoftware.io](https://docs.fireflysoftware.io)
 
 ### Related Projects
 
