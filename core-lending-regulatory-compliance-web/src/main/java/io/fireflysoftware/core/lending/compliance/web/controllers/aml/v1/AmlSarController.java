@@ -1,0 +1,91 @@
+/*
+ * Copyright 2025 Firefly Software Foundation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
+
+
+package io.fireflysoftware.core.lending.compliance.web.controllers.aml.v1;
+
+import org.fireflyframework.core.filters.FilterRequest;
+import org.fireflyframework.core.queries.PaginationResponse;
+import io.fireflysoftware.core.lending.compliance.core.services.aml.v1.AmlSarService;
+import io.fireflysoftware.core.lending.compliance.interfaces.dtos.aml.v1.AmlSarDTO;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import reactor.core.publisher.Mono;
+
+import java.util.UUID;
+
+@RestController
+@RequestMapping("/api/v1/aml-cases/{amlCaseId}/sars")
+@Tag(name = "AmlSar", description = "Operations on SAR (Suspicious Activity Reports) within an AML case")
+@RequiredArgsConstructor
+public class AmlSarController {
+
+    private final AmlSarService service;
+
+    @GetMapping
+    @Operation(summary = "List or search SARs for a given AML case")
+    public Mono<ResponseEntity<PaginationResponse<AmlSarDTO>>> findAll(
+            @PathVariable UUID amlCaseId,
+            @ModelAttribute FilterRequest<AmlSarDTO> filterRequest) {
+
+        return service.findAll(amlCaseId, filterRequest)
+                .map(ResponseEntity::ok);
+    }
+
+    @PostMapping
+    @Operation(summary = "Create a new SAR (Suspicious Activity Report)")
+    public Mono<ResponseEntity<AmlSarDTO>> create(
+            @PathVariable UUID amlCaseId,
+            @RequestBody AmlSarDTO dto) {
+
+        return service.create(amlCaseId, dto)
+                .map(ResponseEntity::ok);
+    }
+
+    @GetMapping("/{amlSarId}")
+    @Operation(summary = "Get a SAR by ID")
+    public Mono<ResponseEntity<AmlSarDTO>> getById(
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlSarId) {
+
+        return service.getById(amlCaseId, amlSarId)
+                .map(ResponseEntity::ok);
+    }
+
+    @PutMapping("/{amlSarId}")
+    @Operation(summary = "Update a SAR record")
+    public Mono<ResponseEntity<AmlSarDTO>> update(
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlSarId,
+            @RequestBody AmlSarDTO dto) {
+
+        return service.update(amlCaseId, amlSarId, dto)
+                .map(ResponseEntity::ok);
+    }
+
+    @DeleteMapping("/{amlSarId}")
+    @Operation(summary = "Delete a SAR record")
+    public Mono<ResponseEntity<Void>> delete(
+            @PathVariable UUID amlCaseId,
+            @PathVariable UUID amlSarId) {
+
+        return service.delete(amlCaseId, amlSarId)
+                .thenReturn(ResponseEntity.noContent().build());
+    }
+}

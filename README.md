@@ -409,7 +409,7 @@ The service provides a client SDK for easy integration:
 
 ```xml
 <dependency>
-    <groupId>com.firefly</groupId>
+    <groupId>io.fireflysoftware</groupId>
     <artifactId>core-lending-regulatory-compliance-sdk</artifactId>
     <version>1.0.0-SNAPSHOT</version>
 </dependency>
@@ -434,7 +434,7 @@ Structured logging with configurable levels:
 logging:
   level:
     root: INFO
-    com.firefly: DEBUG
+    io.fireflysoftware: DEBUG
     org.springframework.r2dbc: DEBUG
   pattern:
     console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
