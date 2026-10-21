@@ -17,7 +17,6 @@
 
 package io.fireflysoftware.core.lending.compliance.interfaces.dtos.reporting.v1;
 
-import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.CurrencyCodeEnum;
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.RecordTypeEnum;
 import org.fireflyframework.utils.annotations.FilterableId;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -27,6 +26,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Pattern;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 import jakarta.validation.constraints.DecimalMin;
@@ -68,7 +68,8 @@ public class ReportingRecordDTO {
     private BigDecimal reportedAmount;
 
     @NotNull(message = "Currency code is required")
-    private CurrencyCodeEnum currencyCode;
+    @Pattern(regexp = "^[A-Z]{3}$", message = "Currency must be a 3-letter ISO 4217 code")
+    private String currencyCode;
 
     @Size(max = 5000, message = "Additional data cannot exceed 5000 characters")
     private String additionalData;

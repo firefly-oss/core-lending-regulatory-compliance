@@ -947,11 +947,9 @@ paths:
           required: false
           schema:
             type: string
-            enum:
-              - EUR
-              - USD
-              - GBP
-              - CHF
+            minLength: 3
+            maxLength: 3
+            pattern: ^[A-Z]{3}$
         - name: filters.additionalData
           in: query
           description: Exact filter for additional data
@@ -1714,11 +1712,10 @@ components:
           type: number
         currencyCode:
           type: string
-          enum:
-            - EUR
-            - USD
-            - GBP
-            - CHF
+          minLength: 3
+          maxLength: 3
+          pattern: ^[A-Z]{3}$
+          description: ISO 4217 currency code
         additionalData:
           maxLength: 5000
           minLength: 0

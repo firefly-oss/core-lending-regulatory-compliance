@@ -17,7 +17,6 @@
 
 package io.fireflysoftware.core.lending.compliance.models.entities.reporting.v1;
 
-import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.CurrencyCodeEnum;
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.RecordTypeEnum;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -62,7 +61,7 @@ public class ReportingRecord {
     private BigDecimal reportedAmount;
 
     @Column("currency_code")
-    private CurrencyCodeEnum currencyCode;
+    private String currencyCode;
 
     @Column("additional_data")
     private String additionalData;

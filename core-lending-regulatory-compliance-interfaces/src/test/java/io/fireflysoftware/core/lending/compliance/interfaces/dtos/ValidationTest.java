@@ -27,7 +27,6 @@ import io.fireflysoftware.core.lending.compliance.interfaces.enums.aml.v1.AmlAct
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.aml.v1.AmlCaseStatusEnum;
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.aml.v1.RiskLevelEnum;
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.aml.v1.SarStatusEnum;
-import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.CurrencyCodeEnum;
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.RecordTypeEnum;
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.ReportTypeEnum;
 import io.fireflysoftware.core.lending.compliance.interfaces.enums.reporting.v1.RunStatusEnum;
@@ -235,7 +234,7 @@ public class ValidationTest {
                 .transactionId(UUID.randomUUID())
                 .recordType(RecordTypeEnum.EXPOSURE)
                 .reportedAmount(new BigDecimal("1000.50"))
-                .currencyCode(CurrencyCodeEnum.EUR)
+                .currencyCode("EUR")
                 .isIncluded(true)
                 .build();
 
@@ -264,7 +263,7 @@ public class ValidationTest {
                 .transactionId(UUID.randomUUID())
                 .recordType(RecordTypeEnum.EXPOSURE)
                 .reportedAmount(BigDecimal.ZERO)
-                .currencyCode(CurrencyCodeEnum.EUR)
+                .currencyCode("EUR")
                 .isIncluded(true)
                 .build();
         
