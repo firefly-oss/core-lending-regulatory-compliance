@@ -1,9 +1,9 @@
 <a href="https://fireflysoftware.io/openplatform/">
 <picture>
-  <source media="(max-width: 640px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/firefly-oss/.github/main/profile/assets/banner-narrow-dark.svg">
-  <source media="(max-width: 640px)" srcset="https://raw.githubusercontent.com/firefly-oss/.github/main/profile/assets/banner-narrow-light.svg">
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/firefly-oss/.github/main/profile/assets/banner-dark.svg">
-  <img src="https://raw.githubusercontent.com/firefly-oss/.github/main/profile/assets/banner-light.svg" alt="Firefly OpenPlatform - Core Lending - Regulatory Compliance" width="100%">
+  <source media="(max-width: 640px) and (prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fireflysoftwaresolutions/.github/main/profile/assets/banner-narrow-dark.svg">
+  <source media="(max-width: 640px)" srcset="https://raw.githubusercontent.com/fireflysoftwaresolutions/.github/main/profile/assets/banner-narrow-light.svg">
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/fireflysoftwaresolutions/.github/main/profile/assets/banner-dark.svg">
+  <img src="https://raw.githubusercontent.com/fireflysoftwaresolutions/.github/main/profile/assets/banner-light.svg" alt="Firefly OpenPlatform - Core Lending - Regulatory Compliance" width="100%">
 </picture>
 </a>
 
@@ -121,7 +121,7 @@ erDiagram
         UUID transaction_id
         ENUM record_type "EXPOSURE, DELINQUENCY, AML_TXN, COLLATERAL, PROVISION"
         DECIMAL reported_amount
-        ENUM currency_code "EUR, USD, GBP, CHF"
+        varchar(3) currency_code "ISO 4217"
         TEXT additional_data
         BOOLEAN is_included
         TEXT exclusion_reason
@@ -213,7 +213,7 @@ The service provides comprehensive RESTful APIs organized by domain:
 - **Reporting Records**: `/api/v1/reporting-runs/{reportingRunId}/records`
   - Individual record management within reporting runs
   - Inclusion/exclusion logic with audit trails
-  - Multi-currency support
+  - Any ISO 4217 currency code on a reporting record
 
 - **Regulatory Submissions**: `/api/v1/reporting-runs/{reportingRunId}/submissions`
   - Submission tracking to regulatory authorities
